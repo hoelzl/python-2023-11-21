@@ -269,3 +269,49 @@ show(image)
 # - Installieren Sie die Pakete aus der Datei `requirements.txt` in das neue
 #   virtuelle Environment
 # - Führen Sie das Skript im neuen virtuellen Environment erneut aus
+
+# %% [markdown] tags=["subslide", "alt"] slideshow={"slide_type": "subslide"}
+#
+# ```shell
+# echo 'import requests
+# from PIL import Image
+# from PIL.ImageShow import show
+#
+# response = requests.get("https://www.python.org/static/img/python-logo.png")
+# with open("python-logo.png", "wb") as file:
+#     file.write(response.content)
+# image = Image.open("python-logo.png")
+# show(image)
+# ' > script.py
+# ```
+
+# %% [markdown] tags=["subslide", "alt"] slideshow={"slide_type": "subslide"}
+#
+# ```shell
+# python -m venv venv-workshop
+# source ./venv-workshop/bin/activate # Linux
+# ./venv-workshop/Scripts/activate.bat # Windows CMD
+# ./venv-workshop/Scripts/Activate.ps1 # Windows PowerShell
+# pip install requests~=2.28.1
+# pip install Pillow~=10.0.0
+# python -c "import requests; print(requests.__version__)"
+# python -c "import PIL; print(PIL.__version__)"
+# python script.py
+# pip freeze > requirements.txt
+# cat requirements.txt
+# deactivate
+
+# %% [markdown] tags=["subslide", "alt"] slideshow={"slide_type": "subslide"}
+#
+# ```shell
+# rm -rf venv-workshop # Linux/OS X
+# rmdir /s venv-workshop # Windows CMD
+# rm -Recurse -Force venv-workshop # Windows PowerShell
+# python -m venv venv2
+# source ./venv2/bin/activate # Linux
+# ./venv2/Scripts/activate.bat # Windows CMD
+# ./venv2/Scripts/Activate.ps1 # Windows PowerShell
+# pip install -r requirements.txt
+# python script.py
+# deactivate
+# ```
