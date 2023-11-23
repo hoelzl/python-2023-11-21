@@ -141,6 +141,33 @@ STUDENTS = [
     {"id": 62, "name": "Doug Caisson"},
 ]
 
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# *Hinweis:* Die Daten für SQLAlchemy müssen als Dictionaries oder Liste von
+# Dictionaries übergeben werden. Falls Sie als andere Datenstruktur vorliegen,
+# müssen Sie diese entsprechend umwandeln.
+
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+STUDENTS_TUPLES = [
+    (1, "Jack Bradley"),
+    (2, "Robert'); DROP TABLE students; --"),
+    (845, "Samantha Jones"),
+    (210, "Jill McGee"),
+    (62, "Doug Caisson"),
+]
+
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+STUDENTS_DICTS = []
+for id_, name in STUDENTS_TUPLES:
+    STUDENTS_DICTS.append({"id": id_, "name": name})
+
+# %%
+
+# %% tags=["subslide', "keep"]
+
+# %%
+
+
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %% tags=["subslide", "start]
