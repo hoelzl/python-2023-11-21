@@ -27,16 +27,13 @@
 #
 # # Eleganter: Listen-Komprehension
 
-
 # %% tags=["keep"]
 result = []
 for item in [1, 2, 3, 4]:
     result.append(item + 1)
 result
 
-
 # %%
-
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 result = []
@@ -44,17 +41,13 @@ for n in [1, 2, 3, 4]:
     result.append(f"Item {n}")
 result
 
-
 # %%
-
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 #  ## Mini-Workshop
 #
-#  - Notebook `workshop_100_lists_part2`
-#  - Abschnitte "Quadratzahlen mit Listen-Komprehension"
-#
+# Schreiben Sie die folgenden Ausdrücke als Listen-Komprehensionen:
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 result = []
@@ -63,9 +56,7 @@ for item in [1, 2, 3, 4, 5, 6]:
         result.append(item)
 result
 
-
 # %%
-
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 result = []
@@ -74,6 +65,27 @@ for item in ["abc", "def", "asd", "qwe", "bab"]:
         result.append(item)
 result
 
+# %%
+
+
+# %% [markdown] lang="de"
+# # Quadratzahlen mit Listen-Komprehension
+#
+# Erzeugen Sie eine neue Liste mit den Quadraten von `numbers`. Verwenden Sie
+# dazu eine Listen-Komprehension
+
+# %% tags=["keep"]
+numbers = [1, 7, 4, 87, 23]
+
+# %%
+
+
+# %% [markdown] lang="de"
+#
+# Schreiben Sie eine Funktion `quadriere(zahlen)`, die jedes Element einer Liste
+# quadriert, mit Listen-Komprehension.
+
+# %%
 
 # %%
 
@@ -130,10 +142,19 @@ data = [
 # %%
 
 
-# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% [markdown] lang="de"
+# # Filtern mit Listen-Komprehension
 #
-#  ## Mini-Workshop
-#
-#  - Notebook `workshop_100_lists_part2`
-#  - Abschnitte "Filtern mit Listen-Komprehension"
-#
+# Erzeugen Sie eine neue Liste, die alle Zahlen in `numbers` enthält, die größer
+# als 10 sind. Verwenden Sie dazu Listen-Komprehension.
+
+# %%
+
+
+# %% [markdown] lang="de"
+# Schreiben Sie die Funktion `zahlen_größer_als_10(zahlen)` mit
+# Listen-Komprehension.
+
+# %%
+
+# %%

@@ -27,18 +27,15 @@
 #
 # # Eleganter: Listen-Komprehension
 
-
 # %% tags=["keep"]
 result = []
 for item in [1, 2, 3, 4]:
     result.append(item + 1)
 result
 
-
 # %%
 my_list = [item + 1 for item in [1, 2, 3, 4]]
 my_list
-
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 result = []
@@ -46,18 +43,14 @@ for n in [1, 2, 3, 4]:
     result.append(f"Item {n}")
 result
 
-
 # %%
 [f"Item {n}" for n in [1, 2, 3, 4]]
-
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 #  ## Mini-Workshop
 #
-#  - Notebook `workshop_100_lists_part2`
-#  - Abschnitte "Quadratzahlen mit Listen-Komprehension"
-#
+# Schreiben Sie die folgenden Ausdrücke als Listen-Komprehensionen:
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 result = []
@@ -66,10 +59,8 @@ for item in [1, 2, 3, 4, 5, 6]:
         result.append(item)
 result
 
-
 # %%
 [item for item in [1, 2, 3, 4, 5, 6] if item % 2 == 0]
-
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 result = []
@@ -78,9 +69,35 @@ for item in ["abc", "def", "asd", "qwe", "bab"]:
         result.append(item)
 result
 
-
 # %%
 [item for item in ["abc", "def", "asd", "qwe"] if item[0] == "a"]
+
+
+# %% [markdown] lang="de"
+# # Quadratzahlen mit Listen-Komprehension
+#
+# Erzeugen Sie eine neue Liste mit den Quadraten von `numbers`. Verwenden Sie
+# dazu eine Listen-Komprehension
+
+# %% tags=["keep"]
+numbers = [1, 7, 4, 87, 23]
+
+# %%
+[n * n for n in numbers]
+
+
+# %% [markdown] lang="de"
+#
+# Schreiben Sie eine Funktion `quadriere(zahlen)`, die jedes Element einer Liste
+# quadriert, mit Listen-Komprehension.
+
+# %%
+def quadriere(zahlen):
+    return [n * n for n in zahlen]
+
+
+# %%
+quadriere(numbers)
 
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
@@ -141,10 +158,24 @@ def filter_city(data, city):
 filter_city(data, "Musterstadt")
 
 
-# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% [markdown] lang="de"
+# # Filtern mit Listen-Komprehension
 #
-#  ## Mini-Workshop
-#
-#  - Notebook `workshop_100_lists_part2`
-#  - Abschnitte "Filtern mit Listen-Komprehension"
-#
+# Erzeugen Sie eine neue Liste, die alle Zahlen in `numbers` enthält, die größer
+# als 10 sind. Verwenden Sie dazu Listen-Komprehension.
+
+# %%
+[n for n in numbers if n > 10]
+
+
+# %% [markdown] lang="de"
+# Schreiben Sie die Funktion `zahlen_größer_als_10(zahlen)` mit
+# Listen-Komprehension.
+
+# %%
+def zahlen_größer_als_10(zahlen):
+    return [n for n in zahlen if n > 10]
+
+
+# %%
+assert zahlen_größer_als_10(numbers) == [183, 87, 23, 493, 11]
