@@ -54,9 +54,14 @@
 #      style="display:block;margin:auto;width:60%"/>
 
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# <img src="img/sqlalchemy-types.svg"
+#      style="display:block;margin:auto;width:60%"/>
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
@@ -77,7 +82,7 @@
 # - `:memory:` ... und einer In-Memory Datenbank
 # - `echo`: SQL-Anweisungen werden geloggt
 #
-# Die Engine wird kommuniziert erst bei Bedarf mit der Datenbank.
+# Die Engine kommuniziert erst bei Bedarf mit der Datenbank.
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
@@ -102,9 +107,11 @@
 # - Mit `engine.connect()`, `conn.execute()` und `engine.commit()` (commit as you go)
 # - Mit `engine.begin()` und `conn.execute()` (begin once)
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -118,23 +125,29 @@
 # - Die Argumente werden als Dictionary oder Sequenz von Dictionaries übergeben
 # - Es gibt keinen Unterschied zwischen `.execute()` und `.executemany()`:
 
-# %%
+# %% tags=["subslide", "start"] slideshow={"slide_type": "subslide"}
+with engine.connect() as conn:
+    conn.execute(text("INSERT INTO students VALUES(1, 'Jack')"))
+    conn.commit()
+    conn.execute(text("INSERT INTO students VALUES(2, 'Jane')"))
+    conn.commit()
 
-# %% tags=["keep"]
+# %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
 STUDENTS = [
-    {"id": 1, "name": "Jack Bradley"},
-    # https://xkcd.com/327/
+    {"id": 1, "name": "Jack Bradley"},  # https://xkcd.com/327/
     {"id": 2, "name": "Robert'); DROP TABLE students; --"},
     {"id": 845, "name": "Samantha Jones"},
     {"id": 210, "name": "Jill McGee"},
     {"id": 62, "name": "Doug Caisson"},
 ]
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
-# %%
+# %% tags=["subslide", "start]
 
-# %%
+# %% tags=["subslide", "start]
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
 #
@@ -148,24 +161,53 @@ STUDENTS = [
 #   - `event_date`
 #   - `winner`
 
-# %% tags=["keep"]
+# %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
 from sqlalchemy import create_engine, text
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # Fügen Sie die folgenden Einträge in die Tabelle ein:
 
-# %%
+# %% tags=["keep"]
+DATA = [
+    (2, "soccer", "2022-08-07", "Mean Dwarves"),
+    (4, "basketball", "2022-08-09", "Swift Waves"),
+    (5, "soccer", "2022-10-11", "Lightning Legends"),
+    (8, "soccer", "2022-08-12", "Fantastic Infernos"),
+    (11, "basketball", "2022-09-12", "Loco Vikings"),
+    (13, "basketball", "2022-09-04", "Storm Bears"),
+    (24, "soccer", "2022-09-06", "Strange Brewers"),
+    (3, "soccer", "2022-09-16", "Odd Gophers"),
+    (6, "basketball", "2022-09-24", "Epic Clouds"),
+    (35, "soccer", "2022-10-21", "Psychodelic Peacocks"),
+    (18, "basketball", "2022-10-30", "Neon Braves"),
+    (7, "soccer", "2022-10-25", "Silent Droids"),
+]
 
-# %% [markdown] lang="de"
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
-# *Hinweis:* Sie müssen dazu das Datenformat anpassen.
+# *Hinweis:* Sie müssen dazu das Datenformat anpassen. SQLAlchemy erwartet die Daten
+# als Liste von Dictionaries:
+#
+# ```python
+# [
+#     {
+#         "event_id": 2,
+#         "sport": "soccer",
+#         "event_date": "2022-08-07",
+#         "winner": "Mean Dwarves"
+#     },
+#     ...
+# ]
+# ```
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #

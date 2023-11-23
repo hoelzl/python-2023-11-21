@@ -12,6 +12,7 @@
 #     name: python3
 # ---
 
+# %%
 # %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
 #
 # <div style="text-align:center; font-size:200%;">

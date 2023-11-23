@@ -32,13 +32,23 @@
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
+# <img src="img/sql-table.svg"
+#      style="display:block;margin:auto;width:60%"/>
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# <img src="img/sqlalchemy-metadata.svg"
+#      style="display:block;margin:auto;width:60%"/>
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
 # ## Metadata
 #
 # - `MetaData`: "Dictionary" für Tabellen
 # - `Table`: Eine Tabelle in einer Datenbank
 # - `Column`: Eine Spalte in einer Tabelle
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -53,7 +63,7 @@
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -63,7 +73,25 @@
 
 # %%
 
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
 # %%
+
+# %%
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["start"]
+hotel_reservations = Table(
+    "reservations",
+    metadata_obj,
+    Column("guest_id", Integer),
+    Column("check_in_date", Date),
+    Column("check_out_date", Date),
+    Column("room_number", Integer),
+)
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -71,21 +99,12 @@
 
 # %%
 
-# %%
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+from sqlalchemy import create_engine
 
 # %%
 
-# %%
-
-# %%
-
-# %%
-
-# %%
-
-# %%
-
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
 #
@@ -97,8 +116,8 @@
 #   `price_class` (Integer)
 # - `customers` mit Spalten `id` (Integer, Primärschlüssel), `name` (String)
 #    und `credit_card_number` (String)
-# - `rental_agreements` mit Spalten `customer_id`, `vehicle_id`,
-#   `start_date`, `end_date`
+# - `rental_agreements` mit Spalten `customer_id` (Fremdschlüssel), `vehicle_id`
+#    (Fremdschlüssel), `start_date` (Date) und `end_date` (Date)
 #
 # Implementieren Sie dieses Datenmodell in SQLAlchemy und erzeugen Sie die Tabellen.
 
@@ -106,34 +125,44 @@
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
-# %%
-
-# %%
-
-# %%
-
-# %% [markdown] lang="de"
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # Ende des Workshops
 
-# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
 #
 # ### Datenbank-Query mit String
 
-# %%
+# %% tags=["keep"]
+from pprint import pprint
 
-# %%
+# %% tags=["keep"]
+from sqlalchemy import text
 
-# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% tags=["keep"]
+with engine.connect() as conn:
+    pprint(conn.execute(text("SELECT * from sqlite_master")).all())
+
+# %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
 #
 # ### Erzeugen einer Tabelle durch Reflection
 #
 # SQLAlchemy kann ein `Table`-Objekt aus einer existierenden
 # Datenbank-Tabelle erzeugen:
+
+# %%
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -149,6 +178,10 @@
 
 # %%
 
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ## Insert Anweisungen
@@ -163,7 +196,16 @@
 
 # %%
 
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
 # %%
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %%
+
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -171,9 +213,8 @@
 
 # %%
 
-# %%
 
-# %% tags=["keep"]
+# %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
 GUESTS = [
     {"name": "Theo Brown", "email": "theo.brown@fastmail.org"},
     {"name": "Alayna Rogers", "email": "arogers@gmail.com"},
@@ -184,55 +225,29 @@ GUESTS = [
     {"name": "Jayla Ruiz", "email": "jayla@ruiz.net"},
 ]
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
-# %%
-
-# %%
-
-# %% tags=["keep"]
+# %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
 RESERVATIONS = [
-    {
-        "guest_id": 2,
-        "check_in_date": d("2023-03-02"),
-        "check_out_date": d("2023-03-02"),
-        "room_number": 123,
-    },
-    {
-        "guest_id": 3,
-        "check_in_date": d("2023-03-04"),
-        "check_out_date": d("2023-03-07"),
-        "room_number": 254,
-    },
-    {
-        "guest_id": 2,
-        "check_in_date": d("2023-03-06"),
-        "check_out_date": d("2023-03-12"),
-        "room_number": 135,
-    },
-    {
-        "guest_id": 4,
-        "check_in_date": d("2023-04-12"),
-        "check_out_date": d("2023-04-22"),
-        "room_number": 312,
-    },
-    {
-        "guest_id": 3,
-        "check_in_date": d("2023-04-17"),
-        "check_out_date": d("2023-04-23"),
-        "room_number": 218,
-    },
-    {
-        "guest_id": 5,
-        "check_in_date": d("2023-05-02"),
-        "check_out_date": d("2023-05-08"),
-        "room_number": 142,
-    },
+    (2, d("2023-03-02"), d("2023-03-02"), 123),
+    (3, d("2023-03-04"), d("2023-03-07"), 254),
+    (2, d("2023-03-06"), d("2023-03-12"), 135),
+    (4, d("2023-04-11"), d("2023-04-22"), 312),
+    (3, d("2023-04-17"), d("2023-04-23"), 218),
+    (5, d("2023-05-02"), d("2023-05-08"), 4),
 ]
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -242,14 +257,14 @@ RESERVATIONS = [
 # werden:
 
 # %% tags=["start"]
-# with engine.connect() as conn:
-#     pprint(
-#         conn.execute(
-#             select(hotel_reservations.c.guest_id).order_by(
-#                 hotel_reservations.c.guest_id
-#             )
-#         ).fetchall()
-#     )
+with engine.connect() as conn:
+    pprint(
+        conn.execute(
+            select(hotel_reservations.c.guest_id).order_by(
+                hotel_reservations.c.guest_id
+            )
+        ).fetchall()
+    )
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
@@ -261,8 +276,11 @@ RESERVATIONS = [
 #
 # ## Mini-Workshop: Autovermietung (Teil 2)
 #
-# Fügen Sie doe folgende Daten in die entsprechenden Tabellen ein. (Sie müssen die
-# Daten dazu in das richtige Format bringen.)
+# Wir haben im vorhergehenden Workshop die Tabellen für eine Autovermietung
+# angelegt.
+#
+# Fügen Sie jetzt die folgenden Daten in diese Tabellen ein. (Sie müssen
+# die Daten dazu in das richtige Format bringen.)
 
 # %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
 VEHICLES = [
@@ -275,7 +293,7 @@ VEHICLES = [
     ("CP08523", 1),
 ]
 
-# %% tags=["keep"]
+# %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
 CUSTOMERS = [
     ("Angela Nelson", "374245455400126"),
     ("Everlee Perkins", "60115564485789458"),
@@ -286,7 +304,7 @@ CUSTOMERS = [
     ("Wren Campbell", "6034932528973614"),
 ]
 
-# %% tags=["keep"]
+# %% tags=["keep", "subslide"] slideshow={"slide_type": "subslide"}
 RENTALS = [
     # vehicle_id, customer_id, start and end date
     (3, 6, "2023-02-12", "2023-03-09"),
@@ -305,11 +323,16 @@ RENTALS = [
     (2, 5, "2023-11-14", "2023-11-15"),
 ]
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# Überprüfen Sie mit Select-Anweisungen, dass die Daten in die Tabellen eingefügt
+# wurden.
 
 # %%
 
-# %% [markdown] lang="de"
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # Ende des Workshops
 
@@ -332,6 +355,10 @@ RENTALS = [
 
 # %%
 
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
 # %%
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
@@ -342,6 +369,8 @@ RENTALS = [
 # %%
 
 # %%
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -356,14 +385,13 @@ RENTALS = [
 
 # %%
 
-# %% tags=["keep"]
-from sqlalchemy import and_, or_
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -379,7 +407,9 @@ from sqlalchemy import and_, or_
 #
 # Mit `select_from()` kann eine `FROM`-Klausel explizit angegeben werden:
 
-# %%
+# %% tags=["keep"]
+stmt = select(guests.c.name).select_from(guests, hotel_reservations)
+print(stmt)
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
@@ -396,7 +426,9 @@ from sqlalchemy import and_, or_
 # Durch eine `WHERE`-Klausel kann das Ergebnis auf die gewünschten Zeilen
 # beschränkt werden:
 
-# %%
+# %% tags=["start"]
+stmt = select(guests.c.name, hotel_reservations.c.check_in_date)
+print(stmt)
 
 # %%
 
@@ -408,15 +440,24 @@ from sqlalchemy import and_, or_
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
-# %% [markdown] lang="de"
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
-# Die Spalten der Joins werden durch Foreign-Key Constraints bestimmt.
+# - Die Spalten der Joins werden durch Foreign-Key Constraints bestimmt.
+# - Wir können sie aber auch explizit angeben:
+
+# %% tags=["start", "subslide"] slideshow={"slide_type": "subslide"}
+with engine.connect() as conn:
+    pprint(
+        conn.execute(
+            select(guests, hotel_reservations.c.room_number).join(hotel_reservations)
+        ).all()
+    )
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
@@ -426,7 +467,7 @@ from sqlalchemy import and_, or_
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -443,13 +484,13 @@ from sqlalchemy import and_, or_
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
-# %% [markdown] lang="de"
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # Ende des Workshops
 
@@ -465,7 +506,19 @@ from sqlalchemy import and_, or_
 
 # %%
 
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# SQL Query, die die Anzahl der Buchungen pro Gast bestimmt:
+
 # %%
+
+# %%
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# - Die angegebene Query gibt uns aber nur die IDs der Gäste zurück.
+# - Wenn wir den Namen des Gastes haben wollen, müssen wir mit einem Join über mehrere
+#   Tabellen arbeiten:
 
 # %%
 
@@ -484,13 +537,13 @@ from sqlalchemy import and_, or_
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
@@ -499,17 +552,20 @@ from sqlalchemy import and_, or_
 # ## Mini-Workshop: Autovermietung (Teil 5)
 #
 # - Löschen Sie das Auto mit ID 3. Was passiert mit der `rental_agreements` Tabelle?
-# - Löschen Sie alle Vorkommen von Auto 3 aus der `rental_agreements` Tabelle.
+# - Löschen Sie alle Vorkommen von Auto 3 aus der `rental_agreements` Tabelle,
+#   falls erforderlich.
 # - Erhöhen Sie die `price_class` aller Autos um 1.
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
 
-# %%
-
-# %%
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
