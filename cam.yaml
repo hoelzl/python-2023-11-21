@@ -9,6 +9,7 @@ dependencies:
   - python>=3.11
   # - cuda==11.7
   # - cudnn
+  - appdirs
   - attrs
   - autopep8
   - bandit

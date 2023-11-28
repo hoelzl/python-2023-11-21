@@ -16,7 +16,7 @@ class EnvConfig(BaseSettings):
     # Paths
     base_dir_path: Path = Path(user_data_dir()) / COURSES_SUBDIR
     data_dir_path: Path = base_dir_path / "data/"
-    model_dir_path: Path = data_dir_path / "models/"
+    sklearn_model_dir_path: Path = data_dir_path / "models/"
     cache_dir_path: Path = Path(user_cache_dir()) / COURSES_SUBDIR
     sklearn_cache_dir_path: Path = cache_dir_path / "sklearn/"
     pickle_dir_path: Path = cache_dir_path / "pickles/"
@@ -46,7 +46,7 @@ class EnvConfig(BaseSettings):
             self.base_dir_path,
             self.data_dir_path,
             self.cache_dir_path,
-            self.model_dir_path,
+            self.sklearn_model_dir_path,
         ]:
             dir_path.mkdir(parents=True, exist_ok=True)
         logging.basicConfig(level=self.loglevel, filename=self.logfile)
