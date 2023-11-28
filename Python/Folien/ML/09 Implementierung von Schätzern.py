@@ -23,6 +23,32 @@
 # <!-- 09 Implementierung von Schätzern.py -->
 # <!-- python_courses/slides/module_700_ml_basics/topic_172_unlucky_classifier.py -->
 
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+import pickle
+
+import matplotlib.pyplot as plt  # noqa
+import numpy as np  # noqa
+
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+try:
+    from python_courses.envconfig import EnvConfig
+except ModuleNotFoundError:
+    from envconfig import EnvConfig  # noqa
+
+# %% tags=["keep"]
+config = EnvConfig()
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+with open(config.processed_mnist_pkl_path, "rb") as file:
+    mnist_data = pickle.load(file)
+
+# %% tags=["keep"]
+x_train = mnist_data["x_train"]
+x_test = mnist_data["x_test"]
+y_train = mnist_data["y_train"]
+y_test = mnist_data["y_test"]
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+lucky7_train = y_train == 7
+lucky7_test = y_test == 7
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ## Scikit-Learn Schätzer
