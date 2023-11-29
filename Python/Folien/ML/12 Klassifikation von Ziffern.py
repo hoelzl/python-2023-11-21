@@ -98,6 +98,17 @@ def plot_numbers(nrows=1, ncols=1):
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 plot_numbers(4, 4)
 
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# ## Verringern der Trainingsdaten
+#
+# Um das Training zu beschleunigen, trainieren wir mit weniger Daten.
+
+# %% tags=["keep"]
+x_train_ori, y_train_ori = x_train, y_train
+x_train = x_train[:10_000]
+y_train = y_train[:10_000]
+
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 from sklearn.linear_model import RidgeClassifier  # noqa: E402
 

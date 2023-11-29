@@ -86,6 +86,20 @@ def plot_confusion_matrices(clf, x_train, x_test, y_train, y_test, normalize=Non
     plt.show()
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
+# ## Verringern der Trainingsdaten
+#
+# Um das Training zu beschleunigen, trainieren wir mit weniger Daten.
+
+# %% tags=["keep"]
+x_train_ori, y_train_ori = x_train, y_train
+lucky7_train_ori = lucky7_train
+x_train = x_train[:10_000]
+y_train = y_train[:10_000]
+lucky7_train = lucky7_train[:10_000]
+
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
 # ## Klassifikation mit Linearem Modell
 
 # %% tags=["keep"]
