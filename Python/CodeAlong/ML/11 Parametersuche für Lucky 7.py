@@ -34,10 +34,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
@@ -54,6 +51,7 @@ y_test = mnist_data["y_test"]
 lucky7_train = y_train == 7
 lucky7_test = y_test == 7
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+import os
 from sklearn.metrics import classification_report
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
@@ -104,7 +102,7 @@ param_grid_gs = {
 from sklearn.ensemble import RandomForestClassifier
 
 # %% tags=["keep"]
-gs_rf = RandomForestClassifier(n_jobs=24)
+gs_rf = RandomForestClassifier(n_jobs=max(os.cpu_count() // 4, 1))
 
 # %%
 
@@ -153,7 +151,7 @@ def num_parameter_combinations(parameters: dict):
 num_parameter_combinations(param_grid)
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-rs_rf = RandomForestClassifier(random_state=42, n_jobs=24)
+rs_rf = RandomForestClassifier(random_state=42, n_jobs=max(os.cpu_count() // 4, 1))
 
 # %%
 
@@ -212,7 +210,7 @@ from sklearn.experimental import enable_halving_search_cv  # noqa
 from sklearn.model_selection import HalvingGridSearchCV  # noqa
 
 # %% tags=["keep"]
-hs_rf = RandomForestClassifier(random_state=42, n_jobs=24)
+hs_rf = RandomForestClassifier(random_state=42, n_jobs=max(os.cpu_count() // 4, 1))
 
 # %%
 

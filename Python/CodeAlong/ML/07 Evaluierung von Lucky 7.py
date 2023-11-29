@@ -30,10 +30,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
@@ -122,8 +119,6 @@ from sklearn.metrics import (  # noqa: E402
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ## Classification Report
@@ -145,10 +140,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()

@@ -37,10 +37,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
@@ -82,6 +79,10 @@ def plot_confusion_matrices(clf, x_train, x_test, y_train, y_test, normalize=Non
     )
     ax2.set_title("Training Data")
     plt.show()
+# %% tags=["keep"]
+import os
+
+
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 def plot_numbers(nrows=1, ncols=1):
     fig, axes = plt.subplots(nrows, ncols, figsize=(ncols, nrows))
@@ -173,7 +174,9 @@ plot_confusion_matrices(dt_clf2, x_train, x_test, y_train, y_test, normalize="pr
 from sklearn.ensemble import RandomForestClassifier  # noqa: E402
 
 # %%
-rf_clf = RandomForestClassifier(random_state=42, n_estimators=200, n_jobs=128)
+rf_clf = RandomForestClassifier(
+    random_state=42, n_estimators=200, n_jobs=os.cpu_count()
+)
 
 # %%
 rf_clf.fit(x_train, y_train)
@@ -215,10 +218,10 @@ best_parameters = {
 }
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-rs_rf = RandomForestClassifier(n_jobs=16)
+rs_rf = RandomForestClassifier(n_jobs=max(os.cpu_count() // 4, 1), random_state=42)
 
 # %%
-rs_clf = RandomizedSearchCV(rs_rf, parameters, cv=3, n_iter=4, n_jobs=12)
+rs_clf = RandomizedSearchCV(rs_rf, parameters, cv=3, n_iter=4, n_jobs=4)
 
 # %% tags=["keep"]
 RANDOM_SEARCH_SAMPLES = 12_000
@@ -230,7 +233,9 @@ rs_clf.fit(x_train[:RANDOM_SEARCH_SAMPLES], y_train[:RANDOM_SEARCH_SAMPLES])
 rs_clf.best_params_
 
 # %%
-rs_best_clf = RandomForestClassifier(n_jobs=128, random_state=42, **rs_clf.best_params_)
+rs_best_clf = RandomForestClassifier(
+    n_jobs=max(os.cpu_count() // 4, 1), random_state=42, **rs_clf.best_params_
+)
 
 # %%
 rs_best_clf.fit(x_train, y_train)
@@ -268,10 +273,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()

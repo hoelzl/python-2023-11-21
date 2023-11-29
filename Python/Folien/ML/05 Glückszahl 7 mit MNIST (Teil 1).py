@@ -29,6 +29,7 @@
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 try:
+    # noinspection PyUnresolvedReferences
     from python_courses.envconfig import EnvConfig
 except ModuleNotFoundError:
     from envconfig import EnvConfig  # noqa
@@ -52,29 +53,48 @@ x_test = mnist_data["x_test"]
 y_train = mnist_data["y_train"]
 y_test = mnist_data["y_test"]
 
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 lucky7_train = y_train == 7
 lucky7_test = y_test == 7
 
 # %%
-lucky7_test[:3], y_test[:3]
+lucky7_test[:3]
+
+# %%
+y_test[:3]
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 plt.imshow(x_test[0].reshape(28, 28), cmap="binary")
-
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-fig, axes = plt.subplots(10, 10)
-for idx, ax in enumerate(np.array(axes).ravel()):
-    ax.imshow(x_test[idx].reshape(28, 28), cmap="binary")
-    ax.set_xticks([], [])
-    ax.set_yticks([], [])
 plt.show()
 
+
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+def show_as_images(x):
+    fig, axes = plt.subplots(10, 10)
+    for idx, ax in enumerate(np.array(axes).ravel()):
+        ax.imshow(x[idx].reshape(28, 28), cmap="binary")
+        ax.set_xticks([], [])
+        ax.set_yticks([], [])
+    plt.show()
+
+
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-from sklearn.linear_model import SGDClassifier  # noqa: E402
+show_as_images(x_test)
+
+
+# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+from sklearn.linear_model import SGDClassifier
 
 # %%
 sgd_clf = SGDClassifier(random_state=42)
+
+# %% [markdown] lang="de"
+#
+# ## Training des Modells
+#
+# - Mit der `fit()`-Methode trainieren wir das Modell.
+# - Um die Trainingszeit zu verkürzen (mit schlechteren Ergebnissen), können wir
+#   nur einen Teil der Trainingsdaten verwenden:
 
 # %%
 sgd_clf.fit(x_train, lucky7_train)
@@ -113,10 +133,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()

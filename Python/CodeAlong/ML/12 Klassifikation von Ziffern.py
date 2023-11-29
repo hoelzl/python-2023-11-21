@@ -37,10 +37,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
@@ -82,6 +79,10 @@ def plot_confusion_matrices(clf, x_train, x_test, y_train, y_test, normalize=Non
     )
     ax2.set_title("Training Data")
     plt.show()
+# %% tags=["keep"]
+import os
+
+
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 def plot_numbers(nrows=1, ncols=1):
     fig, axes = plt.subplots(nrows, ncols, figsize=(ncols, nrows))
@@ -241,10 +242,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()

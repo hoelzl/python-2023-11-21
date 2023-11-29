@@ -263,7 +263,7 @@ vec = np.array([1, 0, 8, 5, 2, 8, 3, 0, 1])
 # - An welcher Position kommen diese Elemente vor?
 # - Erzeugen Sie einen Vektor `vec_max` der die gleiche Länge hat, wie `vec` und
 #   für den gilt
-#   - `vec_max[i]` = `True`, wenn `vec[i]` = `min(vec)`
+#   - `vec_max[i]` = `True`, wenn `vec[i]` = `max(vec)`
 #   - `vec_max[i]` = `False`, sonst
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
@@ -322,7 +322,7 @@ my_vec[[True, False, False, True]]
 #   - `True` an allen Positionen, an denen das minimale Element steht
 #   - `False` sonst
 # - Erzeuge ein Array mit den Indizes: `[0, 1, 2, ..., len(vec) - 1]`
-# - Selektiere die minimal Indizes mit dem booleschen Array
+# - Selektiere die Indizes des minimalen Elements mit dem booleschen Array
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 vec

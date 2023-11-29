@@ -30,10 +30,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
@@ -50,6 +47,7 @@ y_test = mnist_data["y_test"]
 lucky7_train = y_train == 7
 lucky7_test = y_test == 7
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+import os
 from sklearn.metrics import classification_report
 from sklearn.linear_model import SGDClassifier
 
@@ -203,10 +201,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()

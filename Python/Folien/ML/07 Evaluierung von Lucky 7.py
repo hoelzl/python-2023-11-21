@@ -30,10 +30,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
@@ -144,9 +141,6 @@ plt.show()
 ConfusionMatrixDisplay.from_predictions(lucky7_test, lucky7_predict, normalize="true")
 plt.show()
 
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-print(classification_report(lucky7_test, lucky7_predict))
-
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ## Classification Report
@@ -169,10 +163,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()

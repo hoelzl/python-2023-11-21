@@ -29,6 +29,7 @@
 
 # %% tags=["keep"]
 try:
+    # noinspection PyUnresolvedReferences
     from python_courses.envconfig import EnvConfig
 except ModuleNotFoundError:
     from envconfig import EnvConfig  # noqa
@@ -51,11 +52,11 @@ def print_wrapped(text: str):
 #
 # ## Laden der MNIST-Daten
 
-# %%
+# %% tags=["keep"]
 import numpy as np
 import matplotlib.pyplot as plt
 
-# %%
+# %% tags=["keep"]
 with open(config.mnist_pkl_path, "rb") as file:
     mnist = pickle.load(file)
 
@@ -67,7 +68,7 @@ with open(config.mnist_pkl_path, "rb") as file:
 # einem Dictionary ist, aber Einträge können mit den beiden (äquivalenten)
 # Syntax-Varianten `bunch["key"]` und `bunch.key` gelesen und geschrieben werden.
 
-# %%
+# %% tags=["keep"]
 type(mnist)
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
@@ -97,7 +98,11 @@ my_bunch.my_key
 # %%
 my_bunch["my_key"]
 
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# ### Inspizieren von `mnist`
+
+# %%
 mnist.keys()
 
 # %%
@@ -194,8 +199,11 @@ first_number.shape
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ### Umwandeln in Bilder
+#
+# - Bei den Daten handelt es sich um 28x28 Pixel große Bilder.
+# - Wir können sie mit `reshape()` in Matrizen umwandeln um sie anzuzeigen.
 
-# %%
+# %% tags=["keep"]
 first_number_image = first_number.reshape(28, 28)
 second_number_image = second_number.reshape(28, 28)
 
@@ -205,6 +213,9 @@ first_number_image.shape
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ### Anzeigen der Bilder
+#
+# - Mit `plt.imshow()` können wir die Bilder anzeigen.
+# - Die Bilder sind schwarz-weiß, also verwenden wir den `binary` Farbmodus.
 
 # %%
 plt.imshow(first_number_image, cmap="binary")
@@ -214,17 +225,28 @@ plt.show()
 plt.imshow(second_number_image, cmap="binary")
 plt.show()
 
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
-fig, axes = plt.subplots(10, 10)
-for idx, ax in enumerate(np.array(axes).ravel()):
-    ax.imshow(X[idx].reshape(28, 28), cmap="binary")
-    ax.set_xticks([], [])
-    ax.set_yticks([], [])
-plt.show()
+
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+def show_as_images(X):
+    fig, axes = plt.subplots(10, 10)
+    for idx, ax in enumerate(np.array(axes).ravel()):
+        ax.imshow(X[idx].reshape(28, 28), cmap="binary")
+        ax.set_xticks([], [])
+        ax.set_yticks([], [])
+    plt.show()
+
+
+# %%
+show_as_images(X)
+
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
-# ### Umwandeln der Klassen in Zahlen
+# ### Umwandeln der Labels in Zahlen
+#
+# - Die Labels sind Strings.
+# - Damit kann Scikit-Learn nicht umgehen.
+# - Wir können sie mit `astype()` in Zahlen umwandeln.
 
 # %%
 y[:2]
@@ -240,7 +262,7 @@ y[:2]
 # ### Die Zahl 7
 
 # %%
-first_index_of_7 = np.where(y == 7)[0][0]
+first_index_of_7 = (y == 7).nonzero()[0][0]
 first_index_of_7
 
 # %%

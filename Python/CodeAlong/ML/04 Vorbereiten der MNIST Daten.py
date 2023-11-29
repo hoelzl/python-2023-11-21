@@ -29,6 +29,7 @@
 
 # %% tags=["keep"]
 try:
+    # noinspection PyUnresolvedReferences
     from python_courses.envconfig import EnvConfig
 except ModuleNotFoundError:
     from envconfig import EnvConfig  # noqa
@@ -51,9 +52,13 @@ def print_wrapped(text: str):
 #
 # ## Laden der MNIST-Daten
 
-# %%
+# %% tags=["keep"]
+import numpy as np
+import matplotlib.pyplot as plt
 
-# %%
+# %% tags=["keep"]
+with open(config.mnist_pkl_path, "rb") as file:
+    mnist = pickle.load(file)
 
 # %% [markdown] lang="de" tags=["slide"] slideshow={"slide_type": "slide"}
 #
@@ -63,7 +68,8 @@ def print_wrapped(text: str):
 # einem Dictionary ist, aber Einträge können mit den beiden (äquivalenten)
 # Syntax-Varianten `bunch["key"]` und `bunch.key` gelesen und geschrieben werden.
 
-# %%
+# %% tags=["keep"]
+type(mnist)
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 from sklearn.utils import Bunch
@@ -84,7 +90,11 @@ from sklearn.utils import Bunch
 
 # %%
 
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# ### Inspizieren von `mnist`
+
+# %%
 
 # %%
 
@@ -155,24 +165,47 @@ from sklearn.utils import Bunch
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ### Umwandeln in Bilder
+#
+# - Bei den Daten handelt es sich um 28x28 Pixel große Bilder.
+# - Wir können sie mit `reshape()` in Matrizen umwandeln um sie anzuzeigen.
 
-# %%
+# %% tags=["keep"]
+first_number_image = first_number.reshape(28, 28)
+second_number_image = second_number.reshape(28, 28)
+
 
 # %%
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ### Anzeigen der Bilder
+#
+# - Mit `plt.imshow()` können wir die Bilder anzeigen.
+# - Die Bilder sind schwarz-weiß, also verwenden wir den `binary` Farbmodus.
 
 # %%
 
 # %%
 
-# %% tags=["subslide"] slideshow={"slide_type": "subslide"}
+# %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+def show_as_images(X):
+    fig, axes = plt.subplots(10, 10)
+    for idx, ax in enumerate(np.array(axes).ravel()):
+        ax.imshow(X[idx].reshape(28, 28), cmap="binary")
+        ax.set_xticks([], [])
+        ax.set_yticks([], [])
+    plt.show()
+
+# %%
+
 
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
-# ### Umwandeln der Klassen in Zahlen
+# ### Umwandeln der Labels in Zahlen
+#
+# - Die Labels sind Strings.
+# - Damit kann Scikit-Learn nicht umgehen.
+# - Wir können sie mit `astype()` in Zahlen umwandeln.
 
 # %%
 

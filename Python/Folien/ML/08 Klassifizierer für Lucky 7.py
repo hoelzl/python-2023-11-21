@@ -30,10 +30,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
@@ -50,6 +47,7 @@ y_test = mnist_data["y_test"]
 lucky7_train = y_train == 7
 lucky7_test = y_test == 7
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
+import os
 from sklearn.metrics import classification_report
 from sklearn.linear_model import SGDClassifier
 
@@ -170,7 +168,7 @@ plot_confusion_matrices(dt_clf2, x_train, x_test, lucky7_train, lucky7_test)
 from sklearn.ensemble import RandomForestClassifier  # noqa: E402
 
 # %%
-rf_clf = RandomForestClassifier(random_state=42, n_jobs=100)
+rf_clf = RandomForestClassifier(random_state=42, n_jobs=os.cpu_count())
 
 # %%
 rf_clf.fit(x_train, lucky7_train)
@@ -214,10 +212,7 @@ import matplotlib.pyplot as plt  # noqa
 import numpy as np  # noqa
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
-try:
-    from python_courses.envconfig import EnvConfig
-except ModuleNotFoundError:
-    from envconfig import EnvConfig  # noqa
+from envconfig import EnvConfig
 
 # %% tags=["keep"]
 config = EnvConfig()
