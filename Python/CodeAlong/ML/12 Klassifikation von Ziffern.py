@@ -109,6 +109,13 @@ x_train_ori, y_train_ori = x_train, y_train
 x_train = x_train[:10_000]
 y_train = y_train[:10_000]
 
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# ## Ridge Classifier
+#
+# - Ridge Regression ist eine Variante der linearen Regression, die
+#   Regularisierung verwendet.
+
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
 # %%
@@ -131,6 +138,13 @@ plot_confusion_matrices(ridge_clf, x_train, x_test, y_train, y_test, normalize="
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 plot_confusion_matrices(ridge_clf, x_train, x_test, y_train, y_test, normalize="pred")
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# ## Entscheidungsbäume
+#
+# - Entscheidungsbäume führen eine Sequenz von binären Entscheidungen durch,
+#   um eine Loss-Funktion zu minimieren.
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 
@@ -171,6 +185,14 @@ plot_confusion_matrices(dt_clf2, x_train, x_test, y_train, y_test, normalize="tr
 
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 plot_confusion_matrices(dt_clf2, x_train, x_test, y_train, y_test, normalize="pred")
+
+# %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
+#
+# ## Random Forest
+#
+# - Random Forests sind eine Kombination von Entscheidungsbäumen, die
+#   auf zufälligen Teilmengen der Daten trainiert werden.
+# - Typischerweise wird jeder Baum nur auf einem Teil der Features trainiert.
 
 # %% tags=["subslide"] slideshow={"slide_type": "subslide"}
 

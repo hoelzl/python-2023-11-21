@@ -46,6 +46,9 @@ y_test = mnist_data["y_test"]
 # %% tags=["subslide", "keep"] slideshow={"slide_type": "subslide"}
 lucky7_train = y_train == 7
 lucky7_test = y_test == 7
+# %% tags=["keep"]
+from sklearn.metrics import classification_report
+
 # %% [markdown] lang="de" tags=["subslide"] slideshow={"slide_type": "subslide"}
 #
 # ## Scikit-Learn Schätzer
